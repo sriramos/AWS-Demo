@@ -5,8 +5,35 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "[YOUR_REMOTE_STATE_BUCKET_NAME]"
-    key    = "[YOUR_REMOTE_STATE_KEY]"
+    bucket = "cyom-hello-world"
+    key    = "cyom-hello-world"
     region = "us-west-2"
+  }
+}
+
+
+resource "aws_s3_bucket" "s3Bucket" {
+  bucket = "[YOUR_BUCKET_NAME]"
+  acl    = "public-read"
+
+  policy = <<EOF
+{
+  "Id": "MakePublic",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::sriram_test_s3/*",
+      "Principal": "*"
+    }
+  ]
+}
+EOF
+
+  website {
+    index_document = "index.html"
   }
 }
