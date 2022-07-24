@@ -13,7 +13,7 @@ terraform {
 
 
 resource "aws_s3_bucket" "s3Bucket" {
-  bucket = "[YOUR_BUCKET_NAME]"
+  bucket = "sriram_test_s3"
   acl    = "public-read"
 
   policy = <<EOF
