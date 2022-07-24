@@ -13,7 +13,7 @@ terraform {
 
 
 resource "aws_s3_bucket" "s3Bucket" {
-  bucket = "sriram_test_s3"
+  bucket = "sriram-test-s3"
   acl    = "public-read"
 
   policy = <<EOF
@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "s3Bucket" {
         "s3:GetObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::sriram_test_s3/*",
+      "Resource": "arn:aws:s3:::sriram-test-s3/*",
       "Principal": "*"
     }
   ]
